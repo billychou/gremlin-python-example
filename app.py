@@ -78,7 +78,7 @@ def new_person():
         # Ideally I would roll this into a single call
         logging.info("Received Properties: " + str(properties))
         for prop_name, prop_value in properties.items():
-            g.V(person).property(prop_name, prop_value).next()
+            g.V(person.id).property(prop_name, prop_value).next()
     except(ValueError, AttributeError, TypeError) as e:
         logging.error(e, exc_info=True)
         raise BadRequestError('Could not insert person.  Error: ' + str(e))
